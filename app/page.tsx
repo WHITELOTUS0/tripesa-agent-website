@@ -149,7 +149,7 @@ export default function HomePage() {
             >
               <div className="relative z-10">
                 <Image
-                  src="/agent-on-phone.jpg"
+                  src="/login-screen.png"
                   alt="Tripesa Agent App Mockup"
                   width={500}
                   height={750}
