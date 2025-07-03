@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tripesa Agent",
     description: "Manage your agency business on the go",
-    images: ["/app-landing-page.png"],
+    images: ["/website-landing-page.png"],
   },
 };
 
