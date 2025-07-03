@@ -44,12 +44,12 @@ const features = [
 ];
 
 const screenshots = [
-  { id: 1, title: "Dashboard Overview" },
-  { id: 2, title: "Booking Management" },
-  { id: 3, title: "Payment Processing" },
-  { id: 4, title: "Customer Offers" },
-  { id: 5, title: "Analytics View" },
-  { id: 6, title: "Settings Panel" },
+  { id: 1, title: "Dashboard Overview", src: "/dashboard.png" },
+  { id: 2, title: "Booking Management", src: "/booking.png" },
+  { id: 3, title: "Payment Processing", src: "/Payments.png" },
+  { id: 4, title: "Customer Offers", src: "/Offers.png" },
+  { id: 5, title: "Analytics View", src: "/Analytics.png" },
+  { id: 6, title: "Settings Panel", src: "/Settings.png" },
 ];
 
 const whyMobilePoints = [
@@ -141,10 +141,10 @@ export default function HomePage() {
             >
               <div className="relative z-10">
                 <Image
-                  src="/placeholder.svg?height=600&width=400"
+                  src="/agent-on-phone.jpg"
                   alt="Tripesa Agent App Mockup"
-                  width={400}
-                  height={600}
+                  width={500}
+                  height={750}
                   className="mx-auto drop-shadow-2xl"
                 />
               </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
                   <CardContent className="p-0">
                     <div className="relative">
                       <Image
-                        src={`/placeholder.svg?height=400&width=300&text=${screenshot.title}`}
+                        src={screenshot.src}
                         alt={screenshot.title}
                         width={300}
                         height={400}
@@ -320,7 +320,7 @@ export default function HomePage() {
               <Card className="bg-white/10 backdrop-blur-lg border-white/20 p-8">
                 <CardContent className="p-0">
                   <Image
-                    src="/placeholder.svg?height=500&width=400&text=Mobile+Benefits"
+                    src="/man-on-phone.jpg"
                     alt="Mobile App Benefits"
                     width={400}
                     height={500}

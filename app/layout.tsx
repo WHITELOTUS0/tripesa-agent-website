@@ -11,6 +11,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Tripesa Agent",
   description: "Manage your agency business on the go",
+  icons: [{ rel: "icon", url: "/Tripesa-c.svg" }],
 };
 
 export default function RootLayout({
