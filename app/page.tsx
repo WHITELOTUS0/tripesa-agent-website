@@ -151,8 +151,8 @@ export default function HomePage() {
                 <Image
                   src="/login-screen.png"
                   alt="Tripesa Agent App Mockup"
-                  width={500}
-                  height={750}
+                  width={400}
+                  height={600}
                   className="mx-auto drop-shadow-2xl"
                 />
               </div>
