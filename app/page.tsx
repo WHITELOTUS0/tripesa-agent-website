@@ -1,20 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Smartphone,
   CreditCard,
   Calendar,
   Gift,
   ArrowRight,
-  Play,
-  Apple,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedBackground from "@/components/animated-background";
+import { useState } from "react";
 
 const features = [
   {
@@ -62,6 +62,8 @@ const whyMobilePoints = [
 ];
 
 export default function HomePage() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       <AnimatedBackground />
@@ -116,19 +118,25 @@ export default function HomePage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-lg rounded-2xl flex items-center gap-3">
-                    <Apple className="w-6 h-6" />
-                    Download on App Store
-                  </Button>
+                  <Image
+                    src="/Download_on_the_App_Store_Badge.svg"
+                    alt="Download on the App Store"
+                    width={180}
+                    height={60}
+                    className="cursor-pointer"
+                  />
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-6 text-lg rounded-2xl flex items-center gap-3">
-                    <Play className="w-6 h-6" />
-                    Get it on Google Play
-                  </Button>
+                  <Image
+                    src="/English.svg"
+                    alt="Get it on Google Play"
+                    width={180}
+                    height={60}
+                    className="cursor-pointer"
+                  />
                 </motion.div>
               </div>
             </motion.div>
@@ -228,12 +236,14 @@ export default function HomePage() {
             {screenshots.map((screenshot, index) => (
               <motion.div
                 key={screenshot.id}
+                layoutId={`card-${screenshot.src}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
                 className="group cursor-pointer"
+                onClick={() => setSelectedImage(screenshot.src)}
               >
                 <Card className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/15 transition-all duration-300 overflow-hidden">
                   <CardContent className="p-0">
@@ -360,19 +370,25 @@ export default function HomePage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-lg rounded-2xl flex items-center gap-3">
-                      <Apple className="w-6 h-6" />
-                      Download on App Store
-                    </Button>
+                    <Image
+                      src="/Download_on_the_App_Store_Badge.svg"
+                      alt="Download on the App Store"
+                      width={180}
+                      height={60}
+                      className="cursor-pointer"
+                    />
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-6 text-lg rounded-2xl flex items-center gap-3">
-                      <Play className="w-6 h-6" />
-                      Get it on Google Play
-                    </Button>
+                    <Image
+                      src="/English.svg"
+                      alt="Get it on Google Play"
+                      width={180}
+                      height={60}
+                      className="cursor-pointer"
+                    />
                   </motion.div>
                 </div>
               </CardContent>
@@ -408,6 +424,40 @@ export default function HomePage() {
           </motion.div>
         </div>
       </footer>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              layoutId={`card-${selectedImage}`}
+              className="relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={selectedImage}
+                alt="Screenshot"
+                width={1200}
+                height={800}
+                className="max-h-[90vh] w-auto rounded-lg object-contain"
+              />
+            </motion.div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-4 right-4 h-10 w-10 text-white hover:bg-white/20"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="h-6 w-6" />
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
