@@ -14,8 +14,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedBackground from "@/components/animated-background";
-import { useState } from "react";
 import ForceGraph from "@/components/force-graph";
+import PhoneScreens from "@/components/phone-screens";
 
 const features = [
   {
@@ -63,10 +63,8 @@ const whyMobilePoints = [
 ];
 
 export default function HomePage() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
   return (
-    <div className="min-h-screen bg-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-900 relative overflow-x-hidden">
       <AnimatedBackground />
 
       {/* Navigation */}
@@ -236,46 +234,12 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {screenshots.map((screenshot, index) => (
-              <motion.div
-                key={screenshot.id}
-                layoutId={`card-${screenshot.src}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="group cursor-pointer"
-                onClick={() => setSelectedImage(screenshot.src)}
-              >
-                <Card className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/15 transition-all duration-300 overflow-hidden">
-                  <CardContent className="p-0">
-                    <div className="relative">
-                      <Image
-                        src={screenshot.src}
-                        alt={screenshot.title}
-                        width={300}
-                        height={400}
-                        className="w-full h-64 object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold text-white">
-                        {screenshot.title}
-                      </h3>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <PhoneScreens />
         </div>
       </section>
 
       {/* Why Mobile Section */}
-      <section className="relative z-10 px-6 py-20">
+      <section className="relative z-10 px-6 py-20 bg-slate-900/50 backdrop-blur-lg">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -428,40 +392,6 @@ export default function HomePage() {
           </motion.div>
         </div>
       </footer>
-
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              layoutId={`card-${selectedImage}`}
-              className="relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={selectedImage}
-                alt="Screenshot"
-                width={1200}
-                height={800}
-                className="max-h-[90vh] w-auto rounded-lg object-contain"
-              />
-            </motion.div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-4 right-4 h-10 w-10 text-white hover:bg-white/20"
-              onClick={() => setSelectedImage(null)}
-            >
-              <X className="h-6 w-6" />
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
