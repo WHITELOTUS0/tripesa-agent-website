@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedBackground from "@/components/animated-background";
 import { useState } from "react";
+import ForceGraph from "@/components/force-graph";
 
 const features = [
   {
@@ -65,7 +66,7 @@ export default function HomePage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-900 relative overflow-hidden">
       <AnimatedBackground />
 
       {/* Navigation */}
@@ -103,7 +104,7 @@ export default function HomePage() {
             >
               <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 Manage Your{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-coral-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-brandBlue-400">
                   Business
                 </span>{" "}
                 On The Go
@@ -147,6 +148,9 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
+              <div className="absolute inset-0 flex items-center justify-center -z-10">
+                <ForceGraph />
+              </div>
               <div className="relative z-10">
                 <Image
                   src="/login-screen.png"
@@ -156,7 +160,7 @@ export default function HomePage() {
                   className="mx-auto drop-shadow-2xl"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-coral-400/20 blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-brandBlue-400/20 blur-3xl"></div>
             </motion.div>
           </div>
         </div>
@@ -173,7 +177,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Powerful Features for{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-coral-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-brandBlue-400">
                 Modern Agents
               </span>
             </h2>
@@ -195,7 +199,7 @@ export default function HomePage() {
               >
                 <Card className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/15 transition-all duration-300 h-full">
                   <CardContent className="p-8 text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-teal-400 to-coral-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-teal-400 to-brandBlue-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
                       <feature.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-4">
@@ -223,7 +227,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               See It In{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-coral-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-brandBlue-400">
                 Action
               </span>
             </h2>
@@ -281,7 +285,7 @@ export default function HomePage() {
             >
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">
                 Why Choose{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-coral-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-brandBlue-400">
                   Mobile?
                 </span>
               </h2>
@@ -301,7 +305,7 @@ export default function HomePage() {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-center gap-4"
                   >
-                    <div className="w-2 h-2 bg-gradient-to-r from-teal-400 to-coral-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gradient-to-r from-teal-400 to-brandBlue-400 rounded-full"></div>
                     <p className="text-gray-300">{point}</p>
                   </motion.div>
                 ))}
@@ -314,7 +318,7 @@ export default function HomePage() {
                 transition={{ delay: 0.6 }}
                 className="mt-8"
               >
-                <Button className="bg-gradient-to-r from-teal-600 to-coral-600 hover:from-teal-700 hover:to-coral-700 text-white px-8 py-4 text-lg rounded-2xl">
+                <Button className="bg-gradient-to-r from-teal-600 to-brandBlue-600 hover:from-teal-700 hover:to-brandBlue-700 text-white px-8 py-4 text-lg rounded-2xl">
                   Get Started Today
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -338,7 +342,7 @@ export default function HomePage() {
                   />
                 </CardContent>
               </Card>
-              <div className="absolute -inset-4 bg-gradient-to-r from-teal-400/20 to-coral-400/20 blur-2xl -z-10"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-teal-400/20 to-brandBlue-400/20 blur-2xl -z-10"></div>
             </motion.div>
           </div>
         </div>
@@ -356,7 +360,7 @@ export default function HomePage() {
               <CardContent className="p-0">
                 <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                   Ready to Transform Your{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-coral-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-brandBlue-400">
                     Business?
                   </span>
                 </h2>

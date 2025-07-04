@@ -9,7 +9,7 @@ import AnimatedBackground from "@/components/animated-background";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-primary to-slate-900 relative overflow-hidden">
       <AnimatedBackground />
 
       {/* Navigation */}
@@ -359,7 +359,7 @@ export default function PrivacyPolicy() {
 
                 <div className="mt-12 pt-8 border-t border-white/10">
                   <Link href="/">
-                    <Button className="bg-gradient-to-r from-teal-600 to-coral-600 hover:from-teal-700 hover:to-coral-700 text-white px-8 py-4 text-lg rounded-2xl">
+                    <Button className="bg-gradient-to-r from-teal-600 to-brandBlue-600 hover:from-teal-700 hover:to-brandBlue-700 text-white px-8 py-4 text-lg rounded-2xl">
                       <ArrowLeft className="w-5 h-5 mr-2" />
                       Back to Home
                     </Button>

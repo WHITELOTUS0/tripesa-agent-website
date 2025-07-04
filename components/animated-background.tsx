@@ -1,6 +1,15 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { Triangle, Circle, Square, Star, Hexagon } from "lucide-react";
+
+const figures = [
+  <Triangle key="triangle" />,
+  <Circle key="circle" />,
+  <Square key="square" />,
+  <Star key="star" />,
+  <Hexagon key="hexagon" />,
+];
 
 export default function AnimatedBackground() {
   return (
@@ -96,6 +105,35 @@ export default function AnimatedBackground() {
           ease: "easeInOut",
         }}
       />
+
+      {/* Shooting Figures */}
+      {Array.from({ length: 15 }).map((_, i) => {
+        const figure = figures[i % figures.length];
+        return (
+          <motion.div
+            key={i}
+            className="absolute text-white/10"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: "-10%",
+              transform: `scale(${Math.random() * 0.5 + 0.5})`,
+            }}
+            animate={{
+              x: "110vw",
+              y: `${Math.random() * 10 - 5}vh`,
+              rotate: Math.random() * 360,
+            }}
+            transition={{
+              duration: 5 + Math.random() * 10,
+              repeat: Number.POSITIVE_INFINITY,
+              delay: Math.random() * 15,
+              ease: "linear",
+            }}
+          >
+            {figure}
+          </motion.div>
+        );
+      })}
     </div>
-  )
+  );
 }
